@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import Logout from './Logout';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
