@@ -10,6 +10,8 @@ function NavBar() {
         <li><Link to="/jobs">Job List</Link></li>
         <li><Link to="/employer-login">Employer Login</Link></li>
         <li><Link to="/seeker-login">Seeker Login</Link></li>
+        <li><Link to="/logout">Logout</Link></li>
+        <li><Link to="/employerform">EmployerForm</Link></li>
       </ul>
     </nav>
   );
