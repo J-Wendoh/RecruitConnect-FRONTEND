@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./Employerlogin.css";
 
 const Employerlogin = () => {
-  // State to manage form data
   const [formData, setFormData] = useState({
     company_name: "",
     contact_email: "",
@@ -10,41 +11,31 @@ const Employerlogin = () => {
     phone_number: ""
   });
 
-  // State to manage error messages
   const [error, setError] = useState("");
-
-  // State to manage loading state
   const [loading, setLoading] = useState(false);
+  const [jwtToken, setJwtToken] = useState("");
+  const navigate = useNavigate();
 
-  // State to manage JWT token
-  const [jwtToken, setJwtToken] = useState(""); // Ensure token is securely handled
-
-  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      // Make a POST request to the backend with form data and JWT token
       const response = await axios.post("http://127.0.0.1:5000/employers", formData, {
         headers: {
-          Authorization: `Bearer ${jwtToken}` // Add JWT token to headers
+          Authorization: `Bearer ${jwtToken}`
         }
       });
       
-      console.log(response.data);
-      // Handle successful employer addition
       alert("Employer added successfully!");
+      navigate("/"); 
     } catch (error) {
-      // Handle errors
       setError(error.response?.data?.error || "Failed to add employer. Please try again.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -52,7 +43,7 @@ const Employerlogin = () => {
 
   return (
     <div className="form-container">
-      <h2>Add Employer</h2>
+      <h2 className="h2">Add Employer</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
