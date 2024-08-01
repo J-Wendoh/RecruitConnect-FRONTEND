@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; 
 
 const Seekerlogin = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -10,6 +11,7 @@ const Seekerlogin = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,10 +26,19 @@ const Seekerlogin = () => {
         ? "http://127.0.0.1:5000/login"
         : "http://127.0.0.1:5000/register";
       const response = await axios.post(url, formData);
-      console.log(response.data);
-      // Handle successful login/registration
+      
+      if (isLogin) {
+        // Save the JWT token in local storage or context
+        localStorage.setItem("token", response.data.access_token);
+        // Redirect to the home page
+        navigate("/");
+      } else {
+        // Handle registration success if needed
+        console.log(response.data);
+        // Optionally redirect to login page or show a success message
+      }
     } catch (error) {
-      setError(error.response.data.error || "Failed to login/register. Please try again.");
+      setError(error.response?.data?.error || "Failed to login/register. Please try again.");
       console.error(error);
     } finally {
       setLoading(false);

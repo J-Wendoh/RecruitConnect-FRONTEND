@@ -2,34 +2,48 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Employerlogin = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     company_name: "",
     contact_email: "",
     address: "",
     phone_number: ""
   });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [jwtToken, setJwtToken] = useState(""); // Token should be stored securely and retrieved
 
+  // State to manage error messages
+  const [error, setError] = useState("");
+
+  // State to manage loading state
+  const [loading, setLoading] = useState(false);
+
+  // State to manage JWT token
+  const [jwtToken, setJwtToken] = useState(""); // Ensure token is securely handled
+
+  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
     try {
+      // Make a POST request to the backend with form data and JWT token
       const response = await axios.post("http://127.0.0.1:5000/employers", formData, {
         headers: {
-          Authorization: `Bearer ${jwtToken}` // Add JWT token to the headers
+          Authorization: `Bearer ${jwtToken}` // Add JWT token to headers
         }
       });
+      
       console.log(response.data);
       // Handle successful employer addition
+      alert("Employer added successfully!");
     } catch (error) {
-      setError(error.response.data.error || "Failed to add employer. Please try again.");
+      // Handle errors
+      setError(error.response?.data?.error || "Failed to add employer. Please try again.");
       console.error(error);
     } finally {
       setLoading(false);
