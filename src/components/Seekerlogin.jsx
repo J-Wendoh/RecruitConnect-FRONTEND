@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+import "./Seekerlogin.css"; // Ensure this CSS file is imported
 
 const Seekerlogin = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -46,43 +47,54 @@ const Seekerlogin = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>{isLogin ? "Login" : "Register"}</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        {!isLogin && (
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        )}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : isLogin ? "Login" : "Register"}
-        </button>
-        <button type="button" onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? "Switch to Register" : "Switch to Login"}
-        </button>
-      </form>
+    <div className="login-page">
+      <div className="login-container">
+        <h2>{isLogin ? "Login" : "Register"}</h2>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          {!isLogin && (
+            <div className="form-field">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          )}
+          <div className="form-field">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-field">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" disabled={loading} className="btn-primary">
+            {loading ? "Submitting..." : isLogin ? "Login" : "Register"}
+          </button>
+          <div className="switch-form">
+            {isLogin ? "Don't have an account? " : "Already have an account? "}
+            <button type="button" onClick={() => setIsLogin(!isLogin)} className="btn-link">
+              {isLogin ? "Register" : "Login"}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
