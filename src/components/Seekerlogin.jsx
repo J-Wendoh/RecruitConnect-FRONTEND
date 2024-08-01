@@ -1,3 +1,4 @@
+// Seekerlogin.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ const Seekerlogin = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,19 +29,26 @@ const Seekerlogin = () => {
         ? "http://127.0.0.1:5000/login"
         : "http://127.0.0.1:5000/register";
       const response = await axios.post(url, formData);
-      
+
       if (isLogin) {
         // Save the JWT token in local storage or context
         localStorage.setItem("token", response.data.access_token);
         // Redirect to the home page
         navigate("/");
       } else {
-        // Handle registration success if needed
-        console.log(response.data);
-        // Optionally redirect to login page or show a success message
+        // Registration success
+        setShowModal(true);
+        setIsLogin(true); // Switch to login form
+        setFormData({ username: "", email: "", password: "" }); // Clear form fields
       }
     } catch (error) {
-      setError(error.response?.data?.error || "Failed to login/register. Please try again.");
+      if (isLogin) {
+        // Handle login specific error
+        setError("User not found. Please register.");
+      } else {
+        // Handle registration error
+        setError(error.response?.data?.error || "Failed to register. Please try again.");
+      }
       console.error(error);
     } finally {
       setLoading(false);
@@ -94,6 +103,14 @@ const Seekerlogin = () => {
             </button>
           </div>
         </form>
+        {showModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+              <p>Registration success. Please log in.</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
