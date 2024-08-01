@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Landing from './components/Landing';
@@ -15,21 +15,17 @@ import './App.css';
 
 const App = () => {
   return (
-      <div>
-        <NavBar />
+    <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/search" element={<Search />} />
         <Route path="/jobs" element={<JobList />} />
         <Route path="/employer-login" element={<EmployerLogin />} />
         <Route path="/seeker-login" element={<SeekerLogin />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/employerform" element={<EmployerForm/>} />
       </Routes>
       <Footer />
-      </div>
-   
-    
+    </Router>
   );
 };
 
