@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Seekerlogin.css"; // Ensure this CSS file is imported
+import "./Seekerlogin.css"; 
 
 const Seekerlogin = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -58,7 +58,7 @@ const Seekerlogin = () => {
   return (
     <div className="login-page">
       <div className="login-container">
-        <h2>{isLogin ? "Login" : "Register"}</h2>
+        <h2>{isLogin ? "Job-Seeker Login" : "Job-Seeker Register"}</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           {!isLogin && (
