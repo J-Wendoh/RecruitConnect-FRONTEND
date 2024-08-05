@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EmployerForm.css'; 
+import './EmployerForm.css';
 
 const EmployerForm = () => {
   const [formData, setFormData] = useState({
@@ -10,33 +10,22 @@ const EmployerForm = () => {
     job_openings: [''],
     address: '',
     phone_number: '',
-    feedback_received: ['']
   });
 
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const getToken = () => {
-    const token = localStorage.getItem('token');
-    console.log('Token:', token);
-    return token;
-  };
+  const getToken = () => localStorage.getItem('token');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'job_openings' || name === 'feedback_received') {
+    if (name === 'job_openings') {
       const index = e.target.dataset.index;
       const updatedArray = [...formData[name]];
       updatedArray[index] = value;
-      setFormData({
-        ...formData,
-        [name]: updatedArray,
-      });
+      setFormData({ ...formData, [name]: updatedArray });
     } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
+      setFormData({ ...formData, [name]: value });
     }
   };
 
@@ -44,39 +33,37 @@ const EmployerForm = () => {
     const index = e.target.dataset.index;
     const updatedArray = [...formData[name]];
     updatedArray[index] = e.target.value;
-    setFormData({
-      ...formData,
-      [name]: updatedArray,
-    });
+    setFormData({ ...formData, [name]: updatedArray });
   };
 
   const addArrayField = (name) => {
-    setFormData({
-      ...formData,
-      [name]: [...formData[name], ''],
-    });
+    setFormData({ ...formData, [name]: [...formData[name], ''] });
   };
 
   const removeArrayField = (name, index) => {
     const updatedArray = formData[name].filter((_, i) => i !== index);
-    setFormData({
-      ...formData,
-      [name]: updatedArray,
-    });
+    setFormData({ ...formData, [name]: updatedArray });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { company_name, contact_email } = formData;
+    if (!company_name || !contact_email) {
+      setMessage('Company Name and Contact Email are required.');
+      return;
+    }
+
     const token = getToken();
     if (!token || token.split('.').length !== 3) {
       setMessage('Invalid token format. Please log in again.');
-      console.error('Invalid token format:', token);
       return;
     }
+
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://127.0.0.1:5000/employers',
+        'http://127.0.0.1:5000/employers/<employer_id>',
         formData,
         {
           headers: {
@@ -84,9 +71,7 @@ const EmployerForm = () => {
           },
         }
       );
-      console.log('Employer added:', response.data);
       setMessage('Employer added successfully!');
-      
       setFormData({
         company_name: '',
         contact_email: '',
@@ -94,20 +79,15 @@ const EmployerForm = () => {
         job_openings: [''],
         address: '',
         phone_number: '',
-        feedback_received: ['']
       });
     } catch (error) {
       if (error.response) {
-        console.error('Server responded with an error:', error.response.data);
-        setMessage('There was a server error adding the employer.');
+        setMessage(error.response.data.error || 'There was a server error adding the employer.');
       } else if (error.request) {
-        console.error('No response received:', error.request);
         setMessage('No response from the server.');
       } else {
-        console.error('Error setting up the request:', error.message);
         setMessage('Error setting up the request.');
       }
-      console.error('Error config:', error.config);
     }
     setLoading(false);
   };
@@ -173,28 +153,6 @@ const EmployerForm = () => {
         ))}
         <button type="button" onClick={() => addArrayField('job_openings')}>
           Add Job Opening
-        </button>
-      </div>
-      <div>
-        <label htmlFor="feedback_received">Feedback Received:</label>
-        {formData.feedback_received.map((feedback, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              name="feedback_received"
-              data-index={index}
-              value={feedback}
-              onChange={(e) => handleArrayChange(e, 'feedback_received')}
-            />
-            {formData.feedback_received.length > 1 && (
-              <button type="button" onClick={() => removeArrayField('feedback_received', index)}>
-                Remove
-              </button>
-            )}
-          </div>
-        ))}
-        <button type="button" onClick={() => addArrayField('feedback_received')}>
-          Add Feedback
         </button>
       </div>
       <div>
