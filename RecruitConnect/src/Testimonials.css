@@ -253,4 +253,34 @@
   cursor: pointer;
   border-radius: 4px;
 }
+.form-error {
+  background-color: lightblue;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.form-error::before {
+  content: "😢";
+  margin-right: 8px;
+}
+
+.form-success {
+  background-color: lightgreen;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.form-success::before {
+  content: "🎉";
+  margin-right: 8px;
+}
+
 

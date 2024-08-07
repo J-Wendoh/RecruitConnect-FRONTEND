@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for Toastify
+import 'react-toastify/dist/ReactToastify.css'; 
 import "../Loginform.css";
 
 const Seekerlogin = () => {

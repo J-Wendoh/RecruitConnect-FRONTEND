@@ -83,6 +83,22 @@
     margin-bottom: 15px;
     font-family: Arial, sans-serif;
   }
+
+  .register-error-message {
+    background-color: lightblue;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .register-error-message::before {
+    content: "😢";
+    margin-right: 8px;
+  }
+  
   
   @media (max-width: 600px) {
     .register-container {

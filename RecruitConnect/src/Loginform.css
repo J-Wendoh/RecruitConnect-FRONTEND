@@ -133,3 +133,18 @@
 .forgot-password-form button + button:hover {
   text-decoration: none;
 }
+.testimonial-error-message {
+  background-color: lightblue;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.testimonial-error-message::before {
+  content: "😢";
+  margin-right: 8px;
+}
+
