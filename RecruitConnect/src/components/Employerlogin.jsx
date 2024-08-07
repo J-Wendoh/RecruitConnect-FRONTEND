@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../Loginform.css";
 
 const Employerlogin = () => {
@@ -34,10 +36,12 @@ const Employerlogin = () => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/login", formData);
       localStorage.setItem("token", response.data.access_token);
-      alert("Employer logged in successfully!");
+      toast.success("Employer logged in successfully!"); // Show success toast
       navigate("/"); 
     } catch (error) {
-      setError(error.response?.data?.error || "Failed to login. Please try again.");
+      const errorMessage = error.response?.data?.error || "Failed to login. Please try again.";
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -107,6 +111,7 @@ const Employerlogin = () => {
       >
         <Link to="/forgot-password" className="forgot-password-link">Forgot password?</Link>
       </motion.div>
+      <ToastContainer /> 
     </motion.div>
   );
 };

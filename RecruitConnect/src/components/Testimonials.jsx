@@ -25,15 +25,14 @@ const Testimonials = () => {
         });
 
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          const err = await response.json();
+          throw new Error(err.error || "Failed to fetch testimonials.");
         }
 
         const data = await response.json();
-        console.log("Fetched testimonials:", data); // Debugging data
         setTestimonials(data);
       } catch (error) {
-        console.error("Error fetching testimonials:", error);
-        setError("Failed to fetch testimonials.");
+        setError(error.message || "Failed to fetch testimonials.");
       }
     };
 
@@ -74,7 +73,7 @@ const Testimonials = () => {
   
       if (!response.ok) {
         const err = await response.json();
-        throw new Error(err.error || "Network response was not ok");
+        throw new Error(err.error || "Failed to submit feedback.");
       }
   
       const data = await response.json();
@@ -86,8 +85,7 @@ const Testimonials = () => {
       setError("");
       setMessage("Feedback submitted successfully!");
     } catch (error) {
-      console.error("Error posting feedback:", error.message);
-      setError(error.message);
+      setError(error.message || "Failed to submit feedback.");
     }
   };
   

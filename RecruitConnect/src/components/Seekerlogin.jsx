@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for Toastify
 import "../Loginform.css";
 
 const Seekerlogin = () => {
@@ -17,8 +19,8 @@ const Seekerlogin = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token && location.pathname !== "/seeker-login") {
-      navigate("/"); 
+    if (token && location.pathname === "/seeker-login") {
+      navigate("/jobseeker"); 
     }
   }, [navigate, location.pathname]);
 
@@ -34,10 +36,11 @@ const Seekerlogin = () => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/login", formData);
       localStorage.setItem("token", response.data.access_token);
-      alert("Seeker logged in successfully!");
+      toast.success("Seeker logged in successfully!");
       navigate("/jobseeker"); 
     } catch (error) {
       setError(error.response?.data?.error || "Failed to login. Please try again.");
+      toast.error(error.response?.data?.error || "Failed to login. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -92,6 +95,7 @@ const Seekerlogin = () => {
         </motion.button>
       </motion.form>
       <Link to="/forgot-password" className="forgot-password-link">Forgot password?</Link>
+      <ToastContainer />
     </motion.div>
   );
 };
