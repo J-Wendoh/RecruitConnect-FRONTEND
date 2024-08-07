@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+// Navbar.jsx
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ChatComponent from './Chatcomponent'; // Import the ChatComponent
 import "../Navbar.css";
 
 const Navbar = () => {
+  const [showChat, setShowChat] = useState(false);
   const [dropdown, setDropdown] = useState({
     login: false
   });
@@ -11,6 +14,10 @@ const Navbar = () => {
     setDropdown((prev) => ({
       login: type === "login" ? !prev.login : false
     }));
+  };
+
+  const handleToggleChat = () => {
+    setShowChat(!showChat);
   };
 
   const NavItem = ({ title, isOpen, toggle, children }) => (
@@ -47,8 +54,12 @@ const Navbar = () => {
           <Link to="/register" className="nav-button">
             Register
           </Link>
+          <button onClick={handleToggleChat} className="chat-button">
+            Chat
+          </button>
         </div>
       </div>
+      {showChat && <ChatComponent />}
     </nav>
   );
 };

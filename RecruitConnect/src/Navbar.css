@@ -76,6 +76,24 @@
   background-color: #f7fafc;
 }
 
+/* Navbar.css */
+.chat-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.chat-button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
 @media (max-width: 640px) {
   .navbar-container {
     flex-direction: column;
