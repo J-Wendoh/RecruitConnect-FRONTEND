@@ -20,7 +20,8 @@ const Testimonials = () => {
         const token = getAuthToken();
         const response = await fetch("http://127.0.0.1:5000/feedback", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getAuthToken()}`,
           },
         });
 
@@ -65,11 +66,11 @@ const Testimonials = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          employer_id: 1, // Replace with actual employer ID if needed
-          job_id: 2, // Optional: replace with actual job ID if needed
+          employer_id: 1, 
+          job_id: 2, 
           rating: rating,
           content: content,
-        }),
+        })
       });
   
       if (!response.ok) {
