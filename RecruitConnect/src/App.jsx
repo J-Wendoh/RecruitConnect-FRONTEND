@@ -16,6 +16,7 @@ import ForgotPassword from './logincomponent/ForgotPassword';
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ApplyJob from './seekercomponents/ApplyJob';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/apply-job/:jobId" element={<ApplyJob />} />        
       </Routes>
       <Footer />
       <ToastContainer />
