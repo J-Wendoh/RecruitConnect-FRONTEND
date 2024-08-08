@@ -1,6 +1,6 @@
-// this file handles the application form 
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './ApplyJob.css';
 
 const ApplyJob = () => {
   const { jobId } = useParams();
@@ -23,25 +23,28 @@ const ApplyJob = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('phone', formData.phone);
     formDataToSend.append('resume', formData.resume);
-    formDataToSend.append('coverLetter', formData.coverLetter);
-    formDataToSend.append('jobId', jobId);
-
+    formDataToSend.append('cover_letter', formData.coverLetter); 
+    formDataToSend.append('job_id', jobId); 
+  
+    // Retrieve the JWT token from localStorage
+    const token = localStorage.getItem('token');
+  
     try {
-      const response = await fetch('http://127.0.0.1:5000/apply', {
+      const response = await fetch('http://127.0.0.1:5000/applications', {
         method: 'POST',
         body: formDataToSend,
+        headers: {
+          'Authorization': `Bearer ${token}`, // Include the token here
+          // Do not set 'Content-Type' for FormData
+        },
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to submit application');
       }
-
+  
       alert('Application submitted successfully!');
       navigate('/joblist'); // Redirect back to job list
     } catch (error) {
