@@ -8,7 +8,7 @@ const JobPostingEdit = () => {
   const { jobId } = useParams();
 
   useEffect(() => {
-    // Simulate fetching job data (e.g., from local storage or hardcoded data)
+    
     const fetchJobData = () => {
       const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
       const job = jobs.find(j => j.id === parseInt(jobId));

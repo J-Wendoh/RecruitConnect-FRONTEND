@@ -96,7 +96,7 @@ const JobPostingForm = () => {
 
             <label>Employer ID</label>
             <input 
-                className="job-posting-form__input"
+                className="job-posting-form__input"  
                 value={employerId} 
                 onChange={(e) => setEmployerId(e.target.value)} 
                 required 
