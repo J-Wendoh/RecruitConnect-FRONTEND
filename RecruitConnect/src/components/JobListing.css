@@ -1,77 +1,148 @@
-
+/* Container for the entire job listing component */
 .job-listing-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
   }
   
-
-  .job-listing-container h1 {
-    font-size: 28px;
-    text-align: center;
+  /* Styling for the back button */
+  .back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     margin-bottom: 20px;
-    color: #343a40;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
   }
   
-  /* List of jobs */
-  .job-listing-container ul {
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the form */
+  .job-form {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .job-form h2 {
+    margin-top: 0;
+  }
+  
+  /* Common styling for form groups */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .form-group .error {
+    color: red;
+    font-size: 14px;
+  }
+  
+  /* Styling for the submit button */
+  .submit-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Styling for the job list */
+  .job-list {
     list-style-type: none;
     padding: 0;
   }
   
-  /* Individual job item */
   .job-item {
-    border: 1px solid #dee2e6;
+    border: 1px solid #ddd;
     padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    transition: transform 0.2s;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
   }
   
-  /* Job item hover effect */
-  .job-item:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Job title */
-  .job-item h2 {
-    font-size: 22px;
-    margin: 0 0 10px;
-    color: #007bff;
-  }
-  
-  /* Company name and location */
-  .job-item p {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #6c757d;
-  }
-  
-  /* Apply button */
-  .job-item button {
-    padding: 10px 15px;
-    background-color: #28a745;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    font-size: 16px;
-  }
-  
-  /* Apply button hover effect */
-  .job-item button:hover {
-    background-color: #218838;
-  }
-  
-  /* No job listings message */
-  .job-listing-container p {
+  .job-info h2 {
+    margin-top: 0;
     font-size: 18px;
-    color: #6c757d;
+  }
+  
+  .company-name {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .location,
+  .description {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .apply-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .apply-button:hover {
+    background-color: #0056b3;
+  }
+  
+ 
+  .no-jobs-message,
+  .error-message {
     text-align: center;
+    color: #333;
+  }
+  
+  .loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #007bff;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
   
