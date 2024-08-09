@@ -1,0 +1,77 @@
+
+.job-listing-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .job-listing-container h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  /* List of jobs */
+  .job-listing-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Individual job item */
+  .job-item {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: transform 0.2s;
+  }
+  
+  /* Job item hover effect */
+  .job-item:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Job title */
+  .job-item h2 {
+    font-size: 22px;
+    margin: 0 0 10px;
+    color: #007bff;
+  }
+  
+  /* Company name and location */
+  .job-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #6c757d;
+  }
+  
+  /* Apply button */
+  .job-item button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 16px;
+  }
+  
+  /* Apply button hover effect */
+  .job-item button:hover {
+    background-color: #218838;
+  }
+  
+  /* No job listings message */
+  .job-listing-container p {
+    font-size: 18px;
+    color: #6c757d;
+    text-align: center;
+  }
+  

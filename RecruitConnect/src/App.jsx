@@ -22,7 +22,7 @@ import ForgotPassword from './logincomponent/ForgotPassword';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import JobListing from './logincomponent/JobListing';
+import JobListing from './components/JobListing';
 
 const App = () => {
   const auth = useAuth();

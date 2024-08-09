@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './JobListing.css';
 
 
 const JobListing = () => {
@@ -8,7 +9,7 @@ const JobListing = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Replace with your backend API URL
+    
     const fetchJobs = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:5000/jobs');
@@ -50,7 +51,7 @@ const JobListing = () => {
 
 
 const handleApply = (jobId) => {
-  // Implement your job application logic here
+
   console.log(`Applying for job ID: ${jobId}`);
 };
 
