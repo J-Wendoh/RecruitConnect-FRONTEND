@@ -11,7 +11,7 @@ const JobListing = () => {
     // Replace with your backend API URL
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/job');
+        const response = await axios.get('http://127.0.0.1:5000/jobs');
         setJobs(response.data);
       } catch (err) {
         setError('Failed to fetch jobs');
@@ -48,7 +48,7 @@ const JobListing = () => {
   );
 };
 
-// This function handles the job application process
+
 const handleApply = (jobId) => {
   // Implement your job application logic here
   console.log(`Applying for job ID: ${jobId}`);

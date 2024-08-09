@@ -22,6 +22,7 @@ import ForgotPassword from './logincomponent/ForgotPassword';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import JobListing from './logincomponent/JobListing';
 
 const App = () => {
   const auth = useAuth();
@@ -49,7 +50,9 @@ const App = () => {
           <Route path="/jobposting/:id" element={<JobPostingDetails />} />
           <Route path="/jobposting/edit/:id" element={<JobPostingEdit />} />
           <Route path="/jobposting/list" element={<JobPostingList />} />
+          <Route path="/joblisting" element={<JobListing/>} />
           {isAuthenticated && <Route path="/logout" element={<Logout />} />}
+          
         </Routes>
         <Footer />
         <ToastContainer />
