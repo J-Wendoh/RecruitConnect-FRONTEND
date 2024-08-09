@@ -24,6 +24,7 @@ import JobPostingList from './components/JobPostingList';
 import ForgotPassword from './logincomponent/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import JobListing from './components/JobListing';
 
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/jobposting/edit/:id" element={<JobPostingEdit />} />
           <Route path="/jobposting/list" element={<JobPostingList />} />
           <Route path="/employer-dashboard" element={<EmployerDashboard />} />
+          <Route path="/joblisting" element={<JobListing />} />
           {isAuthenticated && <Route path="/logout" element={<Logout />} />}
 
         </Routes>
