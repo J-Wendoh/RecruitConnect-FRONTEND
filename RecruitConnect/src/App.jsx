@@ -5,8 +5,7 @@ import Landing from './components/Landing';
 import Joblist from './components/Joblist';
 import Footer from './components/Footer';
 import EmployerDashboard from './components/EmployerDashboard';
-import './index.css'
-// import './App.css';
+import './index.css';
 import Logout from './components/Logout';
 import { useAuth } from './components/AuthContext';
 import EmployerLogin from './logincomponent/Employerlogin';
@@ -24,7 +23,8 @@ import JobPostingList from './components/JobPostingList';
 import ForgotPassword from './logincomponent/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Notification from './notifications components/notification';
+import Chat from './notifications components/chat'; 
 
 const App = () => {
   const auth = useAuth();
@@ -34,8 +34,8 @@ const App = () => {
     <>
       <div>
         <NavBar />
+        <Notification />
         <Routes>
-          
           <Route path="/" element={<Landing />} />
           <Route path="/joblist" element={<Joblist />} />
           <Route path="/employer-login" element={<EmployerLogin />} />
@@ -55,8 +55,8 @@ const App = () => {
           <Route path="/jobposting/list" element={<JobPostingList />} />
           <Route path="/employer-dashboard" element={<EmployerDashboard />} />
           {isAuthenticated && <Route path="/logout" element={<Logout />} />}
-
         </Routes>
+        {isAuthenticated && <Chat />} 
         <Footer />
         <ToastContainer />
       </div>
