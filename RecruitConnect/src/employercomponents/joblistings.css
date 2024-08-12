@@ -1,0 +1,33 @@
+.job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between cards */
+  }
+  
+  .job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .job-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .job-title {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+  }
+  
+  .job-description {
+    margin-bottom: 8px;
+  }
+  
+  .job-location, .job-company-email, .job-employer-id {
+    margin-bottom: 4px;
+  }
+  
