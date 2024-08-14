@@ -13,7 +13,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchSavedJobs = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/saved_jobs', {
+        const response = await axios.get('http://127.0.0.1:5000/saved_jobs', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
           }

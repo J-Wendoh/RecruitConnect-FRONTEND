@@ -35,13 +35,14 @@ const EmployerLogin = () => {
         "http://127.0.0.1:5000/login",
         formData
       );
-      localStorage.setItem("token", response.data.access_token);
-      localStorage.setItem("username", response.data.username); // store the username in localStorage
-      localStorage.setItem("user_id", response.data.user_id); // store the user_id
-      localStorage.setItem("employer_id", response.data.employer_id); // store the employer_id
-      alert("Employer logged in successfully!");
+      const { access_token, username, user_id, employer_id } = response.data;
+      localStorage.setItem("token", access_token);
+      localStorage.setItem("username", username); // store the username in localStorage
+      localStorage.setItem("user_id", user_id); // store the user_id
+      localStorage.setItem("employer_id", employer_id); // store the employer_id
       navigate("/employer-dashboard"); // Redirect to EmployerDashboard
     } catch (error) {
+      console.error("Login error:", error); // Added console log for debugging
       setError(
         error.response?.data?.error || "Failed to login. Please try again."
       );
