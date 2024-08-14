@@ -23,6 +23,11 @@ import JobPostingList from './components/JobPostingList';
 import ForgotPassword from './logincomponent/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ChatComponent from './ChatComponents/ChatComponent';
+import FloatingButton from './ChatComponents/FloatingButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const App = () => {
@@ -34,7 +39,6 @@ const App = () => {
       <div>
         <NavBar />
         <Routes>
-          
           <Route path="/" element={<Landing />} />
           <Route path="/joblist" element={<Joblist />} />
           <Route path="/employer-login" element={<EmployerLogin />} />
@@ -42,6 +46,7 @@ const App = () => {
           <Route path="/seeker-signup" element={<SeekerLogin />} />
           <Route path="/seeker-login" element={<SeekerLogin />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/chat" component={ChatComponent} />
           <Route path="/jobseeker/*" element={<JobSeeker />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -57,6 +62,8 @@ const App = () => {
           <Route path="/apply-job/:jobId" element={<ApplyJob />} />        
 
         </Routes>
+        <FontAwesomeIcon icon={faCoffee} />
+        <FloatingButton />
         <Footer />
         <ToastContainer />
       </div>
