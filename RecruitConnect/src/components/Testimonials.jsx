@@ -65,8 +65,8 @@ const Testimonials = () => {
         body: JSON.stringify({
           employer_id: 1, // Replace with actual employer ID if needed
           job_id: 2, // Optional: replace with actual job ID if needed
-          rating: rating,
-          content: content,
+          rating,
+          content,
         }),
       });
   
@@ -77,22 +77,24 @@ const Testimonials = () => {
   
       const data = await response.json();
       setTestimonials((prev) => [...prev, data.feedback]);
-      setRating(0);
-      setContent("");
-      setFormSubmitted(true);
-      setShowForm(false);
-      setError("");
+      resetForm();
       setMessage("Feedback submitted successfully!");
     } catch (error) {
       setError(`Error posting feedback: ${error.message}`);
     }
   };
   
+  const resetForm = () => {
+    setRating(0);
+    setContent("");
+    setFormSubmitted(true);
+    setShowForm(false);
+    setError("");
+  };
+
   const handleToggleForm = () => {
     if (formSubmitted) {
-      setFormSubmitted(false);
-      setRating(0);
-      setContent("");
+      resetForm();
       setMessage("");
     }
     setShowForm((prev) => !prev);
@@ -118,28 +120,21 @@ const Testimonials = () => {
                 className="testimonial-slider"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {testimonials.map((testimonial, index) => {
-                  const validRating = Number.isInteger(testimonial.rating) && testimonial.rating >= 1 && testimonial.rating <= 5
-                    ? testimonial.rating
-                    : 0;
-
-                  return (
-                    <div key={index} className="card">
-                      <div className="card-content">
-                        <p className="card-para">{testimonial.content}</p>
-                        <h4 className="card-title">{testimonial.reviewer_id}</h4>
-                        <div className="card-rating">
-                          {[...Array(validRating)].map((_, i) => (
-                            <span key={i}>&#9733;</span>
-                          ))}
-                          {[...Array(5 - validRating)].map((_, i) => (
-                            <span key={i}>&#9734;</span>
-                          ))}
-                        </div>
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="card">
+                    <div className="card-content">
+                      <p className="card-para">{testimonial.content}</p>
+                      <h4 className="card-title">{testimonial.reviewer_id}</h4>
+                      <div className="card-rating">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <span key={i}>
+                            {i < testimonial.rating ? "★" : "☆"}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </div>
             <button
@@ -173,8 +168,6 @@ const Testimonials = () => {
         {showForm && (
           <div>
             <h2>Submit Feedback</h2>
-            {error && <p className="form-error">{error}</p>}
-            {message && <p className="form-success">{message}</p>}
             <form onSubmit={handleSubmit} className="testimonial-form">
               <input
                 type="number"
