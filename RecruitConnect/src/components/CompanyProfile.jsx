@@ -210,4 +210,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
   );
 };
 
+
+
+
 export default CompanyProfile;

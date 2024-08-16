@@ -91,7 +91,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      const response = await axios.post("https://recruitconnect-backend-mlpw.onrender.comreset_password", {
+      const response = await axios.post("https://recruitconnect-backend-mlpw.onrender.com/reset_password", {
         email,
         otp,
         new_password: newPassword

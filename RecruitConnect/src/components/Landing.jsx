@@ -1,9 +1,12 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
+import {motion} from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import { Search, Briefcase, Users, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import Testimonials from "./Testimonials";
+import AwardsSection from "./AwardsSection";
+import RevolvingGlobe from "./RevolvingGlobe";
 import "../Landing.css";
 
 const AnimatedSection = ({ children }) => {
@@ -25,6 +28,29 @@ const Landing = () => {
   return (
     <div className="landing-page">
       <AnimatedSection>
+<<<<<<< HEAD
+        <RevolvingGlobe>
+          <section className="hero">
+            <div className="container">
+              <h1>Find Your Dream Job with RecruitConnect</h1>
+              <p>
+                Connecting talented professionals with amazing opportunities,
+                anywhere in the world
+              </p>
+
+              <div className="cta-buttons">
+                <button
+                  className="btn btn-primary"
+                  onClick={handleFindJobsClick}
+                >
+                  Find Jobs
+                </button>
+                <Link to="/jobposting">
+                  {" "}
+                  <button className="btn btn-secondary">Post a Job</button>
+                </Link>
+              </div>
+=======
         <section className="hero">
           <div className="container">
             <h1>Find Your Dream Job with RecruitConnect</h1>
@@ -32,87 +58,75 @@ const Landing = () => {
           
             <div className="cta-buttons">
               <button className="btn btn-primary" onClick={handleFindJobsClick}>Find Jobs</button>
+>>>>>>> main
             </div>
-          </div>
-        </section>
+          </section>
+        </RevolvingGlobe>
       </AnimatedSection>
 
-      <AnimatedSection>
-        <section className="features">
-          <div className="container">
-            <h2>Why RecruitConnect?</h2>
-            <div className="feature-grid">
-              <div className="feature-item">
-                <Briefcase size={48} />
-                <h3>Job Matching</h3>
-                <p>Find jobs that match your skills and preferences.</p>
-              </div>
-              <div className="feature-item">
-                <Users size={48} />
-                <h3>Application Tracking</h3>
-                <p>Keep track of your applications and get updates.</p>
-              </div>
-              <div className="feature-item">
-                <Search size={48} />
-                <h3>Resume Building</h3>
-                <p>Upload your resume effortlessly.</p>
-              </div>
-              <div className="feature-item">
-                <TrendingUp size={48} />
-                <h3>Career Growth</h3>
-                <p>Access resources to grow and advance your career.</p>
-              </div>
-            </div>
-          </div>
-        </section>
+      <AnimatedSection className="key-features">
+        <h2>Why Choose RecruitConnect</h2>{" "}
+        <div className="features-grid">
+          {" "}
+          <div className="feature">
+
+            <Search size={48} />
+            <h3>Smart Job Matching</h3>
+            <p>AI-powered algorithm to find your perfect fit</p>{" "}
+          </div>{" "}
+          <div className="feature">
+      
+            <Briefcase size={48} />
+            <h3>Global Opportunities</h3>
+            <p>Connect with employers worldwide</p>{" "}
+          </div>{" "}
+          <div className="feature">
+     
+            <TrendingUp size={48} />
+            <h3>Career Insights</h3>
+            <p>Get valuable industry trends and salary information</p>{" "}
+          </div>{" "}
+        </div>{" "}
       </AnimatedSection>
 
       <AnimatedSection>
         <section className="mission-section">
           <div className="container">
-            <h2>Our Mission</h2>
-            <p>
-              At RecruitConnect, our mission is to bridge the gap between job
-              seekers and employers, providing a seamless and efficient platform
-              for job matching and career growth. We strive to empower
-              individuals to find their dream jobs and help companies find the
-              best talent.
-            </p>
+            <div className="mission-content">
+              <div className="mission-text">
+                <h2>Our Mission</h2>
+                <p>
+                  At RecruitConnect, our mission is to bridge the gap between
+                  job seekers and employers, providing a seamless and efficient
+                  platform for job matching and career growth. We strive to
+                  empower individuals to find their dream jobs and help
+                  companies find the best talent.
+                </p>
+                <ul className="mission-points">
+                  <li>Revolutionize the job search process</li>
+                  <li>Foster career development and growth</li>
+                  <li>Promote diversity and inclusion in the workplace</li>
+                  <li>
+                    Provide data-driven insights for better hiring decisions
+                  </li>
+                </ul>
+                <a href="/about" className="learn-more-btn">
+                  Learn More About Us
+                </a>
+              </div>
+              <div className="mission-image">
+                <img
+                  src="https://images.pexels.com/photos/5256819/pexels-photo-5256819.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Team collaborating"
+                />
+              </div>
+            </div>
           </div>
         </section>
       </AnimatedSection>
 
       <AnimatedSection>
-        <section className="awards">
-          <div className="container">
-            <h2>Our Awards</h2>
-            <div className="awards-content">
-              <div className="award">
-                <img
-                  src="https://images.pexels.com/photos/7005047/pexels-photo-7005047.jpeg?auto=compress&cs=tinysrgb&w=300"
-                  alt="Award 1"
-                />
-                <p>Best Recruitment Platform 2023</p>
-              </div>
-              <div className="award">
-                <img
-                  src="https://images.pexels.com/photos/6532362/pexels-photo-6532362.jpeg?auto=compress&cs=tinysrgb&w=300"
-                  alt="Award 2"
-                />
-                <p>Top Innovator in HR Tech 2022</p>
-              </div>
-
-              <div className="award">
-                <img
-                  src="https://t3.ftcdn.net/jpg/08/36/28/32/240_F_836283220_q2tQY2qLf3xq9ldERPnhtLeyM3e51iur.jpg"
-                  alt="Award 3"
-                />
-                <p>Top Innovator in HR Tech 2023</p>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        <AwardsSection />
       </AnimatedSection>
 
       <AnimatedSection>
@@ -145,17 +159,16 @@ const Landing = () => {
                   alt="Company 4"
                 />
               </div>
-        
             </div>
           </div>
         </section>
       </AnimatedSection>
       <AnimatedSection>
-        <Testimonials/>
+        <Testimonials />
       </AnimatedSection>
       <AnimatedSection>
-        <section className="stats">
-          <div className="container">
+        <section className="stats-section">
+          <div className="stats-container">
             <div className="stat-grid">
               <div className="stat-item">
                 <Search size={48} />
@@ -186,6 +199,4 @@ const Landing = () => {
 };
 
 export default Landing;
-
-
 

@@ -22,6 +22,9 @@ import JobPostingDetails from './components/JobPostingDetails';
 import JobPostingEdit from './components/JobPostingEditForm';
 import JobPostingList from './components/JobPostingList';
 import ForgotPassword from './logincomponent/ForgotPassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ParallaxProvider } from "react-scroll-parallax";
 import JobListings from './components/JobListings';
 import Chat from './chat/Chat';
 import UserSearch from './chat/UseSearch';
@@ -29,6 +32,7 @@ import ChatButton from './chat/FloatingChatButton';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Notyf } from 'notyf'; // Correct named import
 import 'notyf/notyf.min.css'; // Import Notyf CSS
+
 
 const notyf = new Notyf(); // Create a new instance of Notyf
 
@@ -44,6 +48,7 @@ const App = () => {
 
   return (
     <>
+    <ParallaxProvider>
       <div>
         <NavBar />
         <Routes>
@@ -74,6 +79,7 @@ const App = () => {
         <Footer />
         {isAuthenticated && <ChatButton />} {/* Show ChatButton only if authenticated */}
       </div>
+          </ParallaxProvider>
     </>
   );
 };

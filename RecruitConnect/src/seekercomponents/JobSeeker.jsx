@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Application from './Application';
+<<<<<<< HEAD
+// import Profile from './Profile';
+
+=======
 import Profile from './Profile';
+>>>>>>> main
 import Savedjobs from './Savedjobs';
 import './seeker.css';
 import ApplicationsList from './ApplicationsList';

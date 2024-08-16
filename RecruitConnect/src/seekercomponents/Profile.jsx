@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import React, { useState } from 'react';
 import { Stepper, Step, StepLabel, Button } from '@mui/material';
 import './Profile.css';
@@ -203,3 +205,4 @@ const Profile = () => {
 };
 
 export default Profile;
+>>>>>>> main

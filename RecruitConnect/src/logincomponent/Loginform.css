@@ -1,135 +1,291 @@
-/* Container for both login forms */
-.login-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* General Styles */
+.employer-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #021526, #03346E);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
 }
 
-/* Header style for login forms */
-.login-header {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
+.employer-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
-/* Form styling */
-.login-form {
+.left {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background: #03346E;  */
+  background: #ee5610; /* Darker blue background */
+}
+/* 
+.right {
+  flex: 1;
+  background: url('https://images.pexels.com/photos/67566/palm-tree-palm-ocean-summer-67566.jpeg?auto=compress&cs=tinysrgb&w=300') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .right {
+  flex: 1;
+  background-image: url('https://images.pexels.com/photos/1151282/pexels-photo-1151282.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+/* Employer Login Specific Styles */
+.employer-header h2 {
+  color: #E2E2B6; /* Light color for text */
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.employer-header h4 {
+  color: #6EACDA; /* Medium light color for subtext */
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.employer-form {
   display: flex;
   flex-direction: column;
 }
 
-.login-input {
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.login-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4285f4; /* Google blue color */
+.employer-input {
+  margin-bottom: 20px;
+  padding: 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #E2E2B6; /* Light color for input text */
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.employer-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.employer-button {
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #6EACDA, #E2E2B6); /* Gradient with primary colors */
+  color: #021526; /* Dark color for button text */
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.login-button:hover {
-  background-color: #357ae8; /* Darker blue for hover effect */
+.employer-button:hover {
+  background: linear-gradient(45deg, #E2E2B6, #6EACDA); /* Gradient reversed on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.error-message {
-  color: #d93025; /* Red for error messages */
-  margin-bottom: 15px;
+.employer-error-message {
+  color: #ff6b6b;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
-.forgot-password-link {
-  display: block;
-  margin-top: 15px;
-  font-size: 14px;
-  color: #4285f4;
-  text-decoration: underline;
+.employer-animation {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
 }
 
-.forgot-password-link:hover {
-  text-decoration: none;
+.employer-a1 { animation-delay: 0.2s; }
+.employer-a2 { animation-delay: 0.4s; }
+.employer-a3 { animation-delay: 0.6s; }
+.employer-a4 { animation-delay: 0.8s; }
+.employer-a5 { animation-delay: 1.0s; }
+.employer-a6 { animation-delay: 1.2s; }
+
+/* Additional shared styles */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
-.forgot-password-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
-.forgot-password-form {
+.employer-container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.employer-button {
+  animation: pulse 2s infinite;
+}
+
+.employer-input {
+  position: relative;
+  z-index: 1;
+}
+
+.employer-input::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #6EACDA, #E2E2B6); /* Gradient behind input */
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.employer-input:focus::before {
+  opacity: 1;
+}
+
+/* General Styles */
+.seeker-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #021526, #03346E); /* Updated gradient */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+}
+
+.seeker-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Left Section Styling */
+ .left {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #03346E; 
+} 
+
+
+
+ .right {
+  flex: 1;
+  background: url('https://t4.ftcdn.net/jpg/01/02/02/21/240_F_102022188_13kNBUOdJ82SkKuLkHu1HRzo8Y4D0uhr.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+.seeker-header h2 {
+  color: #E2E2B6; /* Light color for text */
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.seeker-header h4 {
+  color: #E2E2B6;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.seeker-form {
   display: flex;
   flex-direction: column;
 }
 
-.forgot-password-form h2 {
+.seeker-input {
   margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-.forgot-password-form .input {
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.forgot-password-form button {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4285f4; /* Google blue color */
+  padding: 15px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 50px;
+  background: rgba(110, 172, 218, 0.2); /* #6EACDA with opacity */
+  color: #E2E2B6;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
-.forgot-password-form button:hover {
-  background-color: #357ae8; /* Darker blue for hover effect */
+.seeker-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(110, 172, 218, 0.5); /* #6EACDA shadow */
+  transform: scale(1.05);
 }
 
-.forgot-password-form .error-message {
-  color: #d93025; /* Red for error messages */
-  margin-bottom: 15px;
+
+
+.seeker-input:focus::before {
+  opacity: 1;
 }
 
-.forgot-password-form p {
-  margin: 15px 0;
-}
-
-.forgot-password-form button:disabled {
-  background-color: #c6c6c6; /* Gray color for disabled state */
-  cursor: not-allowed;
-}
-
-.forgot-password-form button + button {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
-  color: #4285f4;
-  background: transparent;
+.seeker-button {
+  padding: 15px;
   border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #6EACDA, #E2E2B6); /* Gradient with the new colors */
+  color: #021526;
+  font-size: 1rem;
   cursor: pointer;
-  text-decoration: underline;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
 }
 
-.forgot-password-form button + button:hover {
-  text-decoration: none;
+.seeker-button:hover {
+  background: linear-gradient(45deg, #E2E2B6, #6EACDA);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.seeker-error-message {
+  color: #FF6B6B; 
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }

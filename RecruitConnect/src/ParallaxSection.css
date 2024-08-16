@@ -1,0 +1,24 @@
+/* ParallaxSection.css */
+.parallax-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.parallax-content {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: rgb(14, 133, 212);
+  text-align: center;
+}
+
+.parallax-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.parallax-content p {
+  font-size: 1.2rem;
+}

@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+import "../Searchbar.css";
+
+function SearchBar({ onSearch }) {
+  const [keywords, setKeywords] = useState("");
+  const [location, setLocation] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+=======
 import React, { Component } from 'react';
 import "../Searchbar.css";
 
@@ -9,6 +18,7 @@ class SearchBar extends Component {
       location: '',
       jobTitle: ''
     };
+>>>>>>> main
 
     this.handleKeywordsChange = this.handleKeywordsChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
@@ -34,6 +44,49 @@ class SearchBar extends Component {
     this.props.onSearch({ keywords, location, jobTitle });
   }
 
+<<<<<<< HEAD
+  return (
+    <form className="search-bar" onSubmit={handleSearch} id="search-container">
+      <div id="main">
+        <input
+          type="text"
+          value={keywords}
+          onChange={(e) => setKeywords(e.target.value)}
+          placeholder="Keywords"
+          className="input"
+        />
+        <div id="input-mask"></div>
+        <div id="cosmic-glow"></div>
+      </div>
+
+      <div id="main">
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Location"
+          className="input"
+        />
+        <div id="input-mask"></div>
+        <div id="cosmic-glow"></div>
+      </div>
+
+      <div id="main">
+        <input
+          type="text"
+          value={jobTitle}
+          onChange={(e) => setJobTitle(e.target.value)}
+          placeholder="Job Title"
+          className="input"
+        />
+        <div id="input-mask"></div>
+        <div id="cosmic-glow"></div>
+      </div>
+
+      <button type="submit">Search</button>
+    </form>
+  );
+=======
   render() {
     return (
       <form className="search-bar" onSubmit={this.handleSearch}>
@@ -59,6 +112,7 @@ class SearchBar extends Component {
       </form>
     );
   }
+>>>>>>> main
 }
 
 export default SearchBar;

@@ -8,7 +8,7 @@ const EmployerForm = () => {
     address: '',
     phone_number: '',
     company_culture: '',
-    job_opening: '', // Add job_opening to initial state
+    job_opening: '', // Adds job_opening to initial state
   });
 
   const [message, setMessage] = useState('');
