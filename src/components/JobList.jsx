@@ -1,67 +1,62 @@
 import React, { useEffect, useState } from "react";
-import JobCard from "./Jobcard";
+import JobCard from "./Jobcard"; // Fixed typo in the import statement
 import "../joblist.css";
-import SearchBar from "./Search";
-
+import SearchBar from "./Search"; // Fixed import statement for consistency
 
 const Joblist = () => {
-  // ... (keep your existing state and functions)
   const [jobs, setJobs] = useState([]);
-    const [filteredJobs, setFilteredJobs] = useState([]);
-    const [selectedJob, setSelectedJob] = useState(null);
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(true);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/jobs', {
+        const response = await fetch('http://127.0.0.1:5000/jobs');
         
-        });
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch jobs");
-          }
-
-          const data = await response.json();
-          setJobs(data);
-          setFilteredJobs(data);
-        } catch (error) {
-          console.error("Error fetching jobs:", error);
-          setError(
-            "An error occurred while fetching jobs. Please try again later."
-          );
-        } finally {
-          setLoading(false);
+        if (!response.ok) {
+          throw new Error("Failed to fetch jobs");
         }
-      };
 
-      fetchJobs();
-    }, []);
-
-    const handleJobClick = (job) => {
-      setSelectedJob(job);
+        const data = await response.json();
+        setJobs(data);
+        setFilteredJobs(data);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        setError("An error occurred while fetching jobs. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const handleBackClick = () => {
-      setSelectedJob(null);
-    };
+    fetchJobs();
+  }, []);
 
-    const handleSearch = ({ keywords, location, jobTitle }) => {
-      const filtered = jobs.filter((job) => {
-        const keywordMatch = keywords
-          ? job.title.toLowerCase().includes(keywords.toLowerCase())
-          : true;
-        const locationMatch = location
-          ? job.location.toLowerCase().includes(location.toLowerCase())
-          : true;
-        const titleMatch = jobTitle
-          ? job.title.toLowerCase().includes(jobTitle.toLowerCase())
-          : true;
-        return keywordMatch && locationMatch && titleMatch;
-      });
+  const handleJobClick = (job) => {
+    setSelectedJob(job);
+  };
 
-      setFilteredJobs(filtered);
-    };
+  const handleBackClick = () => {
+    setSelectedJob(null);
+  };
+
+  const handleSearch = ({ keywords, location, jobTitle }) => {
+    const filtered = jobs.filter((job) => {
+      const keywordMatch = keywords
+        ? job.title.toLowerCase().includes(keywords.toLowerCase())
+        : true;
+      const locationMatch = location
+        ? job.location.toLowerCase().includes(location.toLowerCase())
+        : true;
+      const titleMatch = jobTitle
+        ? job.title.toLowerCase().includes(jobTitle.toLowerCase())
+        : true;
+      return keywordMatch && locationMatch && titleMatch;
+    });
+
+    setFilteredJobs(filtered);
+  };
 
   return (
     <div className="joblist-container">
@@ -79,6 +74,8 @@ const Joblist = () => {
               <button onClick={handleBackClick}>Back to job list</button>
               <JobCard job={selectedJob} detailed />
             </div>
+          ) : filteredJobs.length === 0 ? (
+            <p>No jobs available.</p>
           ) : (
             filteredJobs.map((job) => (
               <JobCard

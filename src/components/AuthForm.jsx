@@ -30,8 +30,8 @@ const AuthForm = () => {
 
     try {
       const url = isLogin
-        ? `https://recruitconnect-backend-mlpw.onrender.com/${role}-login`
-        : `https://recruitconnect-backend-mlpw.onrender.com/${role}-register`;
+        ? `http://127.0.0.1:5000/${role}-login`
+        : `http://127.0.0.1:5000/${role}-register`;
 
       const response = await axios.post(url, formData);
       if (isLogin) {
