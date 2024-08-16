@@ -289,3 +289,84 @@
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+
+
+/* Container for the entire form */
+.forgot-password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  /* background-color: #021526;  */
+  background-color: #092a49; 
+  
+  padding: 20px;
+}
+
+.forgot-password-form {
+  background-color: #fff; /* White background for form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #03346E; /* Dark blue for headings */
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #6EACDA; /* Light blue border */
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #03346E; /* Dark blue for input focus */
+}
+
+button {
+  background-color: #03346E; /* Dark blue for buttons */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:disabled {
+  background-color: #E2E2B6; /* Light beige for disabled buttons */
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #021526; /* Darker blue for hover state */
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.error-message {
+  color: #E2E2B6; /* Light beige for error messages */
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+
+
+p button:hover {
+  text-decoration: underline;
+}
