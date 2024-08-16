@@ -1,72 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-:root {
-  --cp-primary-color: #4a90e2;
-  --cp-secondary-color: #f5f5f5;
-  --cp-text-color: #333;
-  --cp-border-color: #e0e0e0;
-  --cp-success-color: #4caf50;
-  --cp-error-color: #f44336;
-}
-
-.cp-container {
+.testimonial-section {
   font-family: 'Roboto', sans-serif;
   max-width: 800px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2rem 3rem;
   background-color: #ffffff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
-.cp-container:hover {
+.testimonial-section:hover {
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
 }
 
-.cp-logo {
-  display: block;
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  margin: 0 auto 2rem;
-  border-radius: 50%;
+.testimonial-heading {
+  text-align: center;
+  color: var(--cp-text-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial {
+  position: relative;
+    padding: 0 20px; 
+}
+
+.testimonial-slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.card {
+  flex: 0 0 100%;
+  padding: 1.5rem;
+  background-color: var(--cp-secondary-color);
+  border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cp-logo:hover {
-  transform: scale(1.05);
+
+
+.card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.cp-details {
-  display: grid;
-  gap: 1.5rem;
+.card-content {
+  text-align: center;
 }
 
-.cp-details p {
-  margin: 0;
-  padding: 1rem;
-  border-bottom: 1px solid var(--cp-border-color);
+.card-para {
+  font-style: italic;
+  color: var(--cp-text-color);
+  margin-bottom: 1rem;
+}
+
+.card-rating {
+  color: var(--cp-primary-color);
+  font-size: 1.5rem;
+}
+
+.testimonial-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--cp-primary-color);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  z-index: 1;
+}
+
+.testimonial-nav-button:hover {
+  background-color: #357abd;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.testimonial-nav-button-left {
+  left: -20px;
+}
+
+.testimonial-nav-button-right {
+  right: -20px;
+}
+
+.testimonial-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--cp-border-color);
+  margin: 0 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.cp-details p:hover {
-  background-color: var(--cp-secondary-color);
+.indicator-dot.active {
+  background-color: var(--cp-primary-color);
 }
 
-.cp-details strong {
-  font-weight: 500;
-  color: var(--cp-text-color);
-  min-width: 150px;
+.toggle-form-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--cp-primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.cp-form input,
-.cp-form textarea {
+.toggle-form-button:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+.testimonial-form {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.testimonial-form input,
+.testimonial-form textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--cp-border-color);
@@ -76,19 +152,19 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cp-form input:focus,
-.cp-form textarea:focus {
+.testimonial-form input:focus,
+.testimonial-form textarea:focus {
   outline: none;
   border-color: var(--cp-primary-color);
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-.cp-form textarea {
+.testimonial-form textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-.cp-button {
+.testimonial-form button {
   background-color: var(--cp-primary-color);
   color: white;
   border: none;
@@ -97,75 +173,46 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
-  margin-top: 1.5rem;
 }
 
-.cp-button:hover {
+.testimonial-form button:hover {
   background-color: #357abd;
   transform: translateY(-2px);
 }
 
-.cp-button:active {
-  transform: translateY(0);
-}
-
-.cp-button-secondary {
-  margin-left: 1rem;
-  background-color: var(--cp-secondary-color);
-  color: var(--cp-text-color);
-}
-
-.cp-button-secondary:hover {
-  background-color: #e0e0e0;
-}
-
-@keyframes cp-fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.cp-container {
-  animation: cp-fadeIn 0.5s ease-out;
-}
-
-.cp-loading,
-.cp-error {
-  text-align: center;
-  padding: 2rem;
-  font-size: 1.2rem;
-  color: var(--cp-text-color);
-}
-
-.cp-error {
-  color: var(--cp-error-color);
-}
-
-.cp-success-message {
-  background-color: var(--cp-success-color);
-  color: white;
+.testimonial-error-message,
+.testimonial-success-message {
   padding: 1rem;
   border-radius: 6px;
   margin-bottom: 1rem;
   text-align: center;
 }
 
+.testimonial-error-message {
+  background-color: var(--cp-error-color);
+  color: white;
+}
+
+.testimonial-success-message {
+  background-color: var(--cp-success-color);
+  color: white;
+}
+
 @media (max-width: 600px) {
-  .cp-container {
-    padding: 1.5rem;
+  .testimonial-section {
+    padding: 1.5rem 2rem;
   }
 
-  .cp-details p {
-    flex-direction: column;
-    align-items: flex-start;
+  .testimonial-nav-button {
+    width: 30px;
+    height: 30px;
   }
 
-  .cp-details strong {
-    margin-bottom: 0.5rem;
+  .testimonial-nav-button-left {
+    left: -15px;
   }
 
-  .cp-button,
-  .cp-button-secondary {
-    width: 100%;
-    margin: 0.5rem 0;
+  .testimonial-nav-button-right {
+    right: -15px;
   }
 }
