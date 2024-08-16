@@ -423,6 +423,18 @@ p {
 
  } 
 
+ .choose{
+  text-align: center;  /* Center the text */
+  font-weight: bold;   /* Make the text bold */
+  font-family: 'Georgia', serif; /* Use a serif font for a classy look */
+  font-size: 2em;      /* Adjust font size to be larger */
+  color: #333;         /* Set a sophisticated color, e.g., dark gray */
+  text-transform: uppercase; /* Optional: make text uppercase for emphasis */
+  letter-spacing: 1px; /* Optional: add spacing between letters for a more refined look */
+  margin: 20px 0;     /* Add vertical margin for spacing */
+  padding: 10px;      /* Optional: add padding for more spacing inside */
+  border-bottom: 2px solid #ccc;
+ }
 
 
 

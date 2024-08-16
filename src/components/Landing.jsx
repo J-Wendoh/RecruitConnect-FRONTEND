@@ -55,7 +55,7 @@ const Landing = () => {
       </AnimatedSection>
 
       <AnimatedSection className="key-features">
-        <h2>Why Choose RecruitConnect</h2>{" "}
+        <h2 className='choose'>Why Choose RecruitConnect</h2>{" "}
         <div className="features-grid">
           {" "}
           <div className="feature">
