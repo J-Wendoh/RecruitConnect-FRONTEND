@@ -43,10 +43,10 @@ function Footer() {
           <h4>Contact Us</h4>
           <p>Email: support@recruitconnect.com</p>
           <p>
-            Phone: +1 (555) 123-4567
+            Phone: 0725698321
           </p>
 
-          <p>Address: 1234 Recruitment Lane, Jobsville, JS 12345</p>
+          <p>Address:Nyerere Road, RecruitConnect, JS 2456</p>
         </div>
 
         <div className="footer-section social-media">

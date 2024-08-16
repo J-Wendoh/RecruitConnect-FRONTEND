@@ -24,6 +24,7 @@ import JobPostingList from './components/JobPostingList';
 import ForgotPassword from './logincomponent/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ParallaxProvider } from "react-scroll-parallax";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
 
   return (
     <>
+    <ParallaxProvider>
       <div>
         <NavBar />
         <Routes>
@@ -60,6 +62,7 @@ const App = () => {
         <Footer />
         <ToastContainer />
       </div>
+          </ParallaxProvider>
     </>
   );
 };

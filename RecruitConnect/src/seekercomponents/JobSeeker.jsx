@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import Application from './Application';
 // import Profile from './Profile';
-import OnboardingWizard from './OnboardingWizard';
+
 import Savedjobs from './Savedjobs';
 import './seeker.css';
 
