@@ -1,0 +1,56 @@
+.jobseeker-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #ffffffc5;
+}
+
+.jobseeker-navbar {
+  width: 250px;
+  background-color: #161b22; 
+  border-right: 1px solid #1e2124;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.jobseeker-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jobseeker-nav-item {
+  margin-bottom: 15px;
+}
+
+.jobseeker-nav-button {
+  display: block;
+  padding: 10px 15px;
+  font-size:20px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.jobseeker-nav-button:hover {
+  background-color: #000000;
+  color: #ffffff; 
+}
+
+.jobseeker-nav-button.active {
+  background-color: #1E96FC; 
+  color: #ffffff;
+}
+
+.jobseeker-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #F8FFE5; 
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  color: #000000;
+  overflow-y: auto;
+}

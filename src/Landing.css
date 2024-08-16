@@ -1,0 +1,646 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.landing-page {
+  width: 100%;
+}
+
+.hero {
+ 
+  color: #fff;
+  padding: 200px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cta-buttons {
+  margin-top: 20px;
+}
+
+.cta-buttons .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+} 
+
+/* why recruit connect section */
+
+/* .key-features, .job-categories, .interactive-map, .success-stories, .cta {
+  padding: 5% 10%;
+} */
+
+
+
+ .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+.cta-buttons .btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.cta-buttons .btn-secondary {
+  background: #6c757d;
+  color: #fff;
+} 
+
+.key-features {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #e0f7fa 0%, #c5cae9 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.key-features::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(30deg);
+  z-index: 1;
+}
+
+.key-features h2 {
+  font-size: 3.5rem;
+  color: #333;
+  margin-bottom: 3rem;
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding-bottom: 15px;
+  z-index: 2;
+}
+
+.key-features h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #00796b, #004d40);
+  border-radius: 2px;
+}
+
+.features-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.feature {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+  font-size: 1.8rem;
+  color: #00796b;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.feature p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.feature svg {
+  color: #00796b;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  font-size: 3rem;
+}
+
+.feature:hover svg {
+  color: #004d40;
+  transform: scale(1.1) rotate(5deg);
+}
+
+@media (max-width: 768px) {
+  .key-features h2 {
+    font-size: 2.8rem;
+  }
+
+  .feature {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    max-width: 100%;
+  }
+} 
+
+.stats-section {
+  background-color: #f8f9fa;
+  padding: 4rem 0;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+.stat-item svg {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.stat-item h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.stat-item p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.mission-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.mission-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.mission-text {
+  flex: 1;
+}
+
+.mission-section .mission-text h2 {
+  font-size: 3.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  /* background: #007bff; */
+  margin-top: 0.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.mission-points {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.mission-points li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.mission-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.learn-more-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.mission-image {
+  flex: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mission-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.mission-image:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .mission-content {
+    flex-direction: column;
+  }
+
+  .mission-image {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+
+/* Top Companies Section */
+
+ /* .top-companies {
+  background-color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.top-companies h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.companies-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.company {
+  flex: 1 1 calc(25% - 40px);
+  margin: 20px;
+  text-align: center;
+}
+
+.company img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}  
+
+  */
+
+.top-companies {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.top-companies h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.companies-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.company {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.company:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.company img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.company:hover img {
+  transform: scale(1.1);
+}
+
+.company::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.company:hover::after {
+  opacity: 1;
+}
+
+.company-name {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.company:hover .company-name {
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .company {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .top-companies h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .company {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .top-companies h2 {
+    font-size: 1.8rem;
+  }
+}
+
+ /* Add this to your Landing.css file */
+
+.awards {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.awards .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.awards h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.awards-content {
+  margin: 0 -15px;
+}
+
+.award {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 0 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.award-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.award-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.award:hover .award-image {
+  transform: scale(1.05);
+}
+
+.award-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.award h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.award p {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.slick-dots {
+  bottom: -30px;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev {
+  left: -25px;
+}
+
+.slick-next {
+  right: -25px;
+}
+
+@media (max-width: 768px) {
+  .awards-content {
+    padding: 0;
+  }
+<<<<<<< HEAD:RecruitConnect/src/Landing.css
+}
+=======
+
+
+ } 
+
+ .choose{
+  text-align: center;  /* Center the text */
+  font-weight: bold;   /* Make the text bold */
+  font-family: 'Georgia', serif; /* Use a serif font for a classy look */
+  font-size: 2em;      /* Adjust font size to be larger */
+  color: #333;         /* Set a sophisticated color, e.g., dark gray */
+  text-transform: uppercase; /* Optional: make text uppercase for emphasis */
+  letter-spacing: 1px; /* Optional: add spacing between letters for a more refined look */
+  margin: 20px 0;     /* Add vertical margin for spacing */
+  padding: 10px;      /* Optional: add padding for more spacing inside */
+  border-bottom: 2px solid #ccc;
+ }
+
+
+
+
+>>>>>>> main:src/Landing.css
