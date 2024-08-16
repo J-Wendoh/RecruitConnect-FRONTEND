@@ -54,7 +54,7 @@ const Landing = () => {
         </RevolvingGlobe>
       </AnimatedSection>
 
-      <AnimatedSection className="key-features">
+      {/* <AnimatedSection className="key-features">
         <h2>Why Choose RecruitConnect</h2>{" "}
         <div className="features-grid">
           {" "}
@@ -77,6 +77,27 @@ const Landing = () => {
             <p>Get valuable industry trends and salary information</p>{" "}
           </div>{" "}
         </div>{" "}
+      </AnimatedSection> */}
+      
+      <AnimatedSection className="key-features">
+        <h2>Why Choose RecruitConnect</h2>
+        <div className="features-grid">
+          <div className="feature">
+            <Search size={64} /> {/* Increased icon size */}
+            <h3>Smart Job Matching</h3>
+            <p>AI-powered algorithm to find your perfect fit</p>
+          </div>
+          <div className="feature">
+            <Briefcase size={64} /> {/* Increased icon size */}
+            <h3>Global Opportunities</h3>
+            <p>Connect with employers worldwide</p>
+          </div>
+          <div className="feature">
+            <TrendingUp size={64} /> {/* Increased icon size */}
+            <h3>Career Insights</h3>
+            <p>Get valuable industry trends and salary information</p>
+          </div>
+        </div>
       </AnimatedSection>
 
       <AnimatedSection>
@@ -118,7 +139,7 @@ const Landing = () => {
       <AnimatedSection>
         <AwardsSection />
       </AnimatedSection>
-
+{/* 
       <AnimatedSection>
         <section className="top-companies">
           <div className="container">
@@ -152,7 +173,47 @@ const Landing = () => {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
+
+<AnimatedSection>
+  <section className="top-companies">
+    <div className="container">
+      <h2>Top Companies We've Worked With</h2>
+      <div className="companies-content">
+        <div className="company">
+          <img
+            src="https://t3.ftcdn.net/jpg/03/99/04/82/240_F_399048295_bQCz5V7M2QZVnuv07lwHuMiQsR4X6o7X.jpg"
+            alt="Company 1"
+          />
+          <span className="company-name">Amazon</span>
+        </div>
+        <div className="company">
+          <img
+            src="https://t3.ftcdn.net/jpg/05/48/51/50/240_F_548515067_ds7TtH2FI2fNVE9MCWkgNHJhDMWBrVmL.jpg"
+            alt="Company 2"
+          />
+          <span className="company-name">Pinterest</span>
+        </div>
+        <div className="company">
+          <img
+            src="https://t3.ftcdn.net/jpg/02/95/55/04/240_F_295550479_L7LYPxN9NYgCDjEXCDYREkbXTaFKrBb2.jpg"
+            alt="Company 3"
+          />
+          <span className="company-name">Google</span>
+        </div>
+        <div className="company">
+          <img
+            src="https://t3.ftcdn.net/jpg/02/97/73/28/240_F_297732896_pbAY87SnXyhhhgIOavV2PolvM7LUJ5ey.jpg"
+            alt="Company 4"
+          />
+          <span className="company-name">Microsoft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+
       <AnimatedSection>
         <Testimonials />
       </AnimatedSection>
