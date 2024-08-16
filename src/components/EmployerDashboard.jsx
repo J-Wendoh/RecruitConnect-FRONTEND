@@ -36,7 +36,7 @@ const EmployerDashboard = () => {
         }
 
         const response = await axios.get(
-          `https://recruitconnect-backend-mlpw.onrender.com/employers/${employer_id}`,
+          `http://127.0.0.1:5000/employers/${employer_id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

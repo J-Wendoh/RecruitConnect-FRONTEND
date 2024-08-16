@@ -17,7 +17,7 @@ const JobCard = ({ job, onClick, detailed }) => {
 
     try {
       const response = await axios.post(
-        'https://recruitconnect-backend-mlpw.onrender.com/savejob',
+        'http://127.0.0.1:5000/savejob',
         { job_id: job.id },
         {
           headers: {

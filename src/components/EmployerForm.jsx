@@ -37,7 +37,7 @@ const EmployerForm = () => {
     }
     try {
       const response = await axios.post(
-        'https://recruitconnect-backend-mlpw.onrender.com/employers',
+        'http://127.0.0.1:5000/employers',
         formData,
         {
           headers: {

@@ -514,7 +514,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post("https://recruitconnect-backend-mlpw.onrender.com/register", formData);
+      await axios.post("http://127.0.0.1:5000/register", formData);
       toast.success("Registration successful! Please login.");
       if (formData.role === "user") {
         navigate("/seeker-login");
