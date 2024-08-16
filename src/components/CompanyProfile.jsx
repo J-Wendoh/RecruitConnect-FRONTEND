@@ -14,15 +14,12 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
 
   useEffect(() => {
     const fetchCompanyProfile = async () => {
-      if (hasFetched.current) return;
+      if (hasFetched.current || !employer_id || !token) return;
+
       hasFetched.current = true;
+      setLoading(true);
 
       try {
-        if (!employer_id || !token) {
-          throw new Error("employer_id or token is missing");
-        }
-
-        console.log(`Fetching company profile for employer_id: ${employer_id}`);
         const response = await axios.get(
           `https://recruitconnect-backend-mlpw.onrender.com/company_profile/${employer_id}`,
           {
@@ -31,18 +28,14 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
             },
           }
         );
-        console.log("API Response:", response.data);
+
         setCompanyProfile(response.data);
         setUpdatedProfile(response.data);
-
-        if (onProfileUpdate) {
-          onProfileUpdate(response.data);
-        }
+        onProfileUpdate?.(response.data);
       } catch (error) {
-        console.error("Error fetching company profile:", error);
-        setError(
-          error.response?.data?.error || "Error fetching company profile"
-        );
+        const errorMsg =
+          error.response?.data?.error || "Error fetching company profile";
+        setError(errorMsg);
       } finally {
         setLoading(false);
       }
@@ -61,6 +54,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.put(
         `https://recruitconnect-backend-mlpw.onrender.com/company_profile/${employer_id}`,
@@ -71,28 +65,22 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
           },
         }
       );
-      console.log("Update Response:", response.data);
 
-      if (response.data) {
-        setCompanyProfile(response.data);
-        setUpdatedProfile(response.data);
-        setIsEditing(false);
-        setSuccessMessage("Profile updated successfully!");
-        setTimeout(() => setSuccessMessage(""), 3000); // Clear message after 3 seconds
-      } else {
-        console.error("Unexpected response structure:", response.data);
-        setError("Unexpected response structure.");
-      }
+      setCompanyProfile(response.data);
+      setIsEditing(false);
+      setSuccessMessage("Profile updated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000); // Clear success message after 3 seconds
     } catch (error) {
-      console.error("Error updating company profile:", error);
-      setError(error.response?.data?.error || "Error updating company profile");
+      const errorMsg =
+        error.response?.data?.error || "Error updating company profile";
+      setError(errorMsg);
     }
   };
 
   if (loading) return <div className="cp-container cp-loading">Loading...</div>;
   if (error) return <div className="cp-container cp-error">Error: {error}</div>;
 
-  if (!companyProfile || Object.keys(companyProfile).length === 0) {
+  if (!companyProfile) {
     return (
       <div className="cp-container">No company profile data available.</div>
     );
@@ -113,7 +101,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
       {isEditing ? (
         <form onSubmit={handleSubmit} className="cp-form">
           <div className="cp-details">
-            <p>
+            <label>
               <strong>Company Name:</strong>
               <input
                 type="text"
@@ -121,8 +109,8 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 value={updatedProfile.name || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
+            </label>
+            <label>
               <strong>Company Address:</strong>
               <input
                 type="text"
@@ -130,8 +118,8 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 value={updatedProfile.address || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
+            </label>
+            <label>
               <strong>Contact Email:</strong>
               <input
                 type="email"
@@ -139,8 +127,8 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 value={updatedProfile.contact_email || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
+            </label>
+            <label>
               <strong>Phone Number:</strong>
               <input
                 type="text"
@@ -148,16 +136,16 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 value={updatedProfile.phone_number || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
+            </label>
+            <label>
               <strong>Company Culture:</strong>
               <textarea
                 name="company_culture"
                 value={updatedProfile.company_culture || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <p>
+            </label>
+            <label>
               <strong>Job Openings:</strong>
               <input
                 type="text"
@@ -165,17 +153,19 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 value={updatedProfile.job_openings || ""}
                 onChange={handleInputChange}
               />
-            </p>
-            <button type="submit" className="cp-button">
-              Save Changes
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsEditing(false)}
-              className="cp-button cp-button-secondary"
-            >
-              Cancel
-            </button>
+            </label>
+            <div className="cp-buttons">
+              <button type="submit" className="cp-button">
+                Save Changes
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsEditing(false)}
+                className="cp-button cp-button-secondary"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </form>
       ) : (
@@ -187,7 +177,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
             <strong>Company Address:</strong> {companyProfile.address}
           </p>
           <p>
-            <strong>Contact Email:</strong>
+            <strong>Contact Email:</strong>{" "}
             <a href={`mailto:${companyProfile.contact_email}`}>
               {companyProfile.contact_email}
             </a>
@@ -196,12 +186,16 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
             <strong>Phone Number:</strong> {companyProfile.phone_number}
           </p>
           <p>
-            <strong>Company Culture:</strong> {companyProfile.company_culture}
+            <strong>Company Culture:</strong>{" "}
+            {companyProfile.company_culture}
           </p>
           <p>
             <strong>Job Openings:</strong> {companyProfile.job_openings}
           </p>
-          <button onClick={() => setIsEditing(true)} className="cp-button">
+          <button
+            onClick={() => setIsEditing(true)}
+            className="cp-button"
+          >
             Edit Profile
           </button>
         </div>
@@ -209,8 +203,5 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
     </div>
   );
 };
-
-
-
 
 export default CompanyProfile;
