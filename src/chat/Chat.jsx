@@ -5,7 +5,7 @@ import './Chat.css'; // Custom styles
 import { toast } from 'react-toastify';
 
 // Initialize socket connection
-const socket = io('http://localhost:5000');
+const socket = io('https://recruitconnect-backend-mlpw.onrender.com');
 
 const Chat = () => {
   const [message, setMessage] = useState('');

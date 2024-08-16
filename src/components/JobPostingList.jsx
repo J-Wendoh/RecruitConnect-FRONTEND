@@ -5,7 +5,7 @@ import JobPostingDetails from './JobPostingDetails';
 const JobPostingList = () => {
     const [jobPostings, setJobPostings] =useState([]);
       useEffect(() => {
-        fetch('/api/jobpostings')
+        fetch('https://recruitconnect-backend-mlpw.onrender.com/jobpostings')
         .then(response => response.json())
         .then(data => setJobPostings(data));
       },[]);

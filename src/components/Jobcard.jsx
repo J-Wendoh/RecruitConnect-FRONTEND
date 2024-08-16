@@ -9,7 +9,7 @@ const JobCard = ({ job, onClick }) => {
   const navigate = useNavigate();
   const handleSave = (e) => {
     e.stopPropagation(); 
-    fetch('http://127.0.0.1:5000/savejob', {
+    fetch('https://recruitconnect-backend-mlpw.onrender.com/savejob', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

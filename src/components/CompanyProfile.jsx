@@ -2,6 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "../CompanyProfile.css";
 
+// Mock data
+const mockCompanyProfile = {
+  name: "Tech Innovations Inc.",
+  address: "123 Tech Lane, Silicon Valley, CA",
+  contact_email: "contact@techinnovations.com",
+  phone_number: "(123) 456-7890",
+  company_culture: "We thrive on innovation and creativity. Our culture promotes continuous learning and growth.",
+  job_openings: "Software Engineer, Product Manager, UX Designer",
+  picture_url: "https://via.placeholder.com/150"
+};
+
 const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
   const [companyProfile, setCompanyProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,19 +29,9 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
       hasFetched.current = true;
 
       try {
-        if (!employer_id || !token) {
-          throw new Error("employer_id or token is missing");
-        }
-
+        // Simulating API call
         console.log(`Fetching company profile for employer_id: ${employer_id}`);
-        const response = await axios.get(
-          `http://127.0.0.1:5000/company_profile/${employer_id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = { data: mockCompanyProfile };
         console.log("API Response:", response.data);
         setCompanyProfile(response.data);
         setUpdatedProfile(response.data);
@@ -40,9 +41,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
         }
       } catch (error) {
         console.error("Error fetching company profile:", error);
-        setError(
-          error.response?.data?.error || "Error fetching company profile"
-        );
+        setError("Error fetching company profile");
       } finally {
         setLoading(false);
       }
@@ -62,15 +61,10 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
-        `http://localhost:5000/company_profile/${employer_id}`,
-        updatedProfile,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // Simulating API call
+      console.log("Updating company profile with:", updatedProfile);
+      const response = { data: updatedProfile };
+
       console.log("Update Response:", response.data);
 
       if (response.data) {
@@ -85,24 +79,20 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
       }
     } catch (error) {
       console.error("Error updating company profile:", error);
-      setError(error.response?.data?.error || "Error updating company profile");
+      setError("Error updating company profile");
     }
   };
 
   if (loading) return <div className="cp-container cp-loading">Loading...</div>;
   if (error) return <div className="cp-container cp-error">Error: {error}</div>;
 
-  if (!companyProfile || Object.keys(companyProfile).length === 0) {
-    return (
-      <div className="cp-container">No company profile data available.</div>
-    );
+  if (!companyProfile) {
+    return <div className="cp-container">No company profile data available.</div>;
   }
 
   return (
     <div className="cp-container">
-      {successMessage && (
-        <div className="cp-success-message">{successMessage}</div>
-      )}
+      {successMessage && <div className="cp-success-message">{successMessage}</div>}
       {companyProfile.picture_url && (
         <img
           src={companyProfile.picture_url}
@@ -166,9 +156,7 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
                 onChange={handleInputChange}
               />
             </p>
-            <button type="submit" className="cp-button">
-              Save Changes
-            </button>
+            <button type="submit" className="cp-button">Save Changes</button>
             <button
               type="button"
               onClick={() => setIsEditing(false)}
@@ -210,7 +198,4 @@ const CompanyProfile = ({ employer_id, token, onProfileUpdate }) => {
   );
 };
 
-
-
-
-export default CompanyProfile;
+export default CompanyProfile
