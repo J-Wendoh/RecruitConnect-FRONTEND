@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       const fetchUser = async () => {
         try {
-          const response = await axios.get("https://recruitconnect-backend-mlpw.onrender.com/user", {
+          const response = await axios.get("http://127.0.0.1:5000/user", {
             headers: { Authorization: `Bearer ${token}` }
           });
           setUser(response.data);
@@ -34,14 +34,14 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post("https://recruitconnect-backend-mlpw.onrender.com/login", { email, password });
+      const response = await axios.post("http://127.0.0.1:5000/login", { email, password });
       const { access_token } = response.data;
       localStorage.setItem('token', access_token);
       setToken(access_token);
       setIsAuthenticated(true);
       
       // Fetch user details after successful login
-      const userResponse = await axios.get("https://recruitconnect-backend-mlpw.onrender.com/user", {
+      const userResponse = await axios.get("http://127.0.0.1:5000/user", {
         headers: { Authorization: `Bearer ${access_token}` }
       });
       setUser(userResponse.data);
