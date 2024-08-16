@@ -69,7 +69,7 @@ const SavedJobs = () => {
               key={job.id} 
               job={job} 
               detailed={true} 
-              onSave={() => handleSaveJob(job)} // Add onSave handler
+              onSave={() => handleSaveJob(job)} 
             />
           ))
         ) : (

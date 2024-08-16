@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import '../jobcard.css';
-import { FaSave, FaArrowRight } from 'react-icons/fa'; // Add this import for icons
-import { toast } from 'react-toastify'; // Import toast
-
+import { FaSave, FaArrowRight } from 'react-icons/fa'; 
+import { toast } from 'react-toastify'; 
+import { useNavigate } from 'react-router-dom';
 const JobCard = ({ job, onClick }) => {
   const [expanded, setExpanded] = useState(false);
-
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
   const handleSave = (e) => {
-    e.stopPropagation(); // Prevent triggering the card click event
-    // Add logic to save the job
+    e.stopPropagation(); 
     fetch('http://127.0.0.1:5000/savejob', {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ jobId: job.id }),
+    },
+      body: JSON.stringify({ job_id: job.id }),
     })
       .then(response => response.json())
       .then(data => {
         console.log('Job saved:', data);
-        toast.success('Job saved successfully! 🎉'); // Show success toast with party emoji
+        toast.success('Job saved successfully! 🎉'); 
+        navigate('/jobseeker/savedjobs')
+
+        
       })
       .catch(error => {
         console.error('Error saving job:', error);
