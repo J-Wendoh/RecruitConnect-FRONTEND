@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "../jobcard.css";
 import { FaSave, FaArrowRight } from "react-icons/fa";
@@ -25,6 +26,39 @@ const JobCard = ({ job, onClick }) => {
         console.error("Error saving job:", error);
         toast.error("Error saving job. Please try again. 😔");
       });
+=======
+import React from 'react';
+import '../jobcard.css';
+import { FaSave, FaArrowRight } from 'react-icons/fa'; 
+import axios from 'axios';
+
+const JobCard = ({ job, onClick, detailed }) => {
+  const handleSave = async (event) => {
+    event.stopPropagation(); 
+
+    const token = localStorage.getItem("token"); 
+    if (!token) {
+      console.error('No access token found');
+      alert('Please log in to save jobs.');
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:5000/savejob',
+        { job_id: job.id },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      console.log('Job saved:', response.data);
+    } catch (error) {
+      console.error('Error saving job:', error.response ? error.response.data : error.message);
+    }
+>>>>>>> main
   };
 
   const handleApply = (e) => {

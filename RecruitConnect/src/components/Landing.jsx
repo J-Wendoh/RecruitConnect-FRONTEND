@@ -28,6 +28,7 @@ const Landing = () => {
   return (
     <div className="landing-page">
       <AnimatedSection>
+<<<<<<< HEAD
         <RevolvingGlobe>
           <section className="hero">
             <div className="container">
@@ -49,6 +50,15 @@ const Landing = () => {
                   <button className="btn btn-secondary">Post a Job</button>
                 </Link>
               </div>
+=======
+        <section className="hero">
+          <div className="container">
+            <h1>Find Your Dream Job with RecruitConnect</h1>
+            <p>Connecting talented professionals with amazing opportunities</p>
+          
+            <div className="cta-buttons">
+              <button className="btn btn-primary" onClick={handleFindJobsClick}>Find Jobs</button>
+>>>>>>> main
             </div>
           </section>
         </RevolvingGlobe>

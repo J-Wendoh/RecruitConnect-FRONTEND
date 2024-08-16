@@ -5,7 +5,12 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Overview from "./Overview";
 import CompanyProfile from "./CompanyProfile";
+<<<<<<< HEAD
 import HelpCenter from "./HelpCenter"; 
+=======
+import JobListings from "./JobListings"; // Import JobListings component
+import HelpCenter from "./HelpCenter"; // Import HelpCenter component
+>>>>>>> main
 import {
   Home,
   Briefcase,
@@ -82,6 +87,8 @@ const EmployerDashboard = () => {
     switch (activeTab) {
       case "Overview":
         return <Overview stats={employerData?.stats} />;
+      case "Job Listings":
+        return <JobListings />; // Render the JobListings component when "Job Listings" is selected
       case "Company Profile":
         return (
           <CompanyProfile
@@ -91,8 +98,14 @@ const EmployerDashboard = () => {
           />
         );
       case "Help Center":
+<<<<<<< HEAD
         return <HelpCenter />; // Renders the HelpCenter component when "Help Center" is selected
       
+=======
+        return <HelpCenter />; // Render the HelpCenter component when "Help Center" is selected
+      default:
+        return <Overview stats={employerData?.stats} />;
+>>>>>>> main
     }
   };
 

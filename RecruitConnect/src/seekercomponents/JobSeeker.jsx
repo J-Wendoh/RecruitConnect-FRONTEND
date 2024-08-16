@@ -1,10 +1,15 @@
 import React from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import Application from './Application';
+<<<<<<< HEAD
 // import Profile from './Profile';
 
+=======
+import Profile from './Profile';
+>>>>>>> main
 import Savedjobs from './Savedjobs';
 import './seeker.css';
+import ApplicationsList from './ApplicationsList';
 
 function JobSeeker() {
   return (
@@ -25,15 +30,20 @@ function JobSeeker() {
             <Link to="savedjobs" className="jobseeker-nav-button">
               Saved Jobs
             </Link>
+            <li className="jobseeker-nav-item">
+            <Link to="ApplicationsList" className="jobseeker-nav-button">
+            ApplicationsList
+            </Link>
+          </li>            
           </li>
         </ul>
       </nav>
       <div className="jobseeker-content">
         <Routes>
           <Route path="application" element={<Application />} />
-          {/* <Route path="profile" element={<Profile />} /> */}
-          <Route path="profile" element={<OnboardingWizard />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="savedjobs" element={<Savedjobs />} />
+          <Route path="ApplicationsList" element={<ApplicationsList/>} />
         </Routes>
       </div>
     </div>

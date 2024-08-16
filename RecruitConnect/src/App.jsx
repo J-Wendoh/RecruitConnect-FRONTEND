@@ -1,12 +1,12 @@
+// src/App.jsx
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Landing from './components/Landing';
-import Joblist from './components/Joblist';
 import Footer from './components/Footer';
+import Landing from './components/Landing';
+import Joblist from './components/JobList';
 import EmployerDashboard from './components/EmployerDashboard';
-import './index.css'
-// import './App.css';
+import ApplyJob from './seekercomponents/ApplyJob';
 import Logout from './components/Logout';
 import { useAuth } from './components/AuthContext';
 import EmployerLogin from './logincomponent/Employerlogin';
@@ -25,11 +25,26 @@ import ForgotPassword from './logincomponent/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from "react-scroll-parallax";
+import JobListings from './components/JobListings';
+import Chat from './chat/Chat';
+import UserSearch from './chat/UseSearch';
+import ChatButton from './chat/FloatingChatButton';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Notyf } from 'notyf'; // Correct named import
+import 'notyf/notyf.min.css'; // Import Notyf CSS
 
+
+const notyf = new Notyf(); // Create a new instance of Notyf
 
 const App = () => {
-  const auth = useAuth();
-  const isAuthenticated = auth ? auth.isAuthenticated : false;
+  const { isAuthenticated } = useAuth();
+
+  // Override default alert to use Notyf
+  React.useEffect(() => {
+    window.alert = (message) => {
+      notyf.success(message);
+    };
+  }, []);
 
   return (
     <>
@@ -37,7 +52,6 @@ const App = () => {
       <div>
         <NavBar />
         <Routes>
-          
           <Route path="/" element={<Landing />} />
           <Route path="/joblist" element={<Joblist />} />
           <Route path="/employer-login" element={<EmployerLogin />} />
@@ -57,10 +71,13 @@ const App = () => {
           <Route path="/jobposting/list" element={<JobPostingList />} />
           <Route path="/employer-dashboard" element={<EmployerDashboard />} />
           {isAuthenticated && <Route path="/logout" element={<Logout />} />}
-
+          <Route path="/apply-job/:jobId" element={<ApplyJob />} />
+          <Route path="/joblistings" element={<JobListings />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/user-search" element={<UserSearch />} />
         </Routes>
         <Footer />
-        <ToastContainer />
+        {isAuthenticated && <ChatButton />} {/* Show ChatButton only if authenticated */}
       </div>
           </ParallaxProvider>
     </>
