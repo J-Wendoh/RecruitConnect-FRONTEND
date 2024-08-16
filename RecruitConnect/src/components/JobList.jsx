@@ -11,11 +11,12 @@ const Joblist = () => {
     const [selectedJob, setSelectedJob] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-      const fetchJobs = async () => {
-        try {
-          const response = await fetch("http://127.0.0.1:5000/jobs");
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('https://recruitconnect-backend-mlpw.onrender.com/jobs', {
+        
+        });
 
           if (!response.ok) {
             throw new Error("Failed to fetch jobs");
