@@ -364,66 +364,95 @@ p {
  /* Add this to your Landing.css file */
 
 .awards {
-  padding: 2rem 0;
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.awards .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.awards h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
 }
 
 .awards-content {
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0 -15px;
 }
 
 .award {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
+  overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  max-width: 350px; /* Set a max-width for the card */
-  margin: 0 auto; /* Center the card 
-}
-
-
-
-.
+  margin: 0 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .award-image-container {
   width: 100%;
-  /* height: 200px; */
   height: 200px;
-  margin-bottom: 1rem;
   overflow: hidden;
-  border-radius: 8px;
+}
+
+.award-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.award:hover .award-image {
+  transform: scale(1.05);
+}
+
+.award-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .award h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: #007bff;
 }
 
 .award p {
   font-size: 0.9rem;
   color: #6c757d;
+  margin-bottom: 0;
 }
 
 .slick-dots {
   bottom: -30px;
 }
 
-.slick-prev, .slick-next {
+.slick-prev,
+.slick-next {
   z-index: 1;
+}
+
+.slick-prev {
+  left: -25px;
+}
+
+.slick-next {
+  right: -25px;
 }
 
 @media (max-width: 768px) {
   .awards-content {
-    padding: 0 1rem;
+    padding: 0;
   }
-
-
- } 
-
-
-
-
-
+}
