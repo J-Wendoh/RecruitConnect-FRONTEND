@@ -29,6 +29,7 @@ const Testimonials = () => {
         }
 
         const data = await response.json();
+        console.log("Fetched Testimonials Data:", data); // Debugging line
         setTestimonials(data);
       } catch (error) {
         setError(`Failed to fetch testimonials: ${error.message}`);
@@ -48,12 +49,12 @@ const Testimonials = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (rating < 1 || rating > 5 || !content) {
       setError("Please provide valid inputs.");
       return;
     }
-  
+
     try {
       const token = getAuthToken();
       const response = await fetch("http://127.0.0.1:5000/feedback", {
@@ -63,18 +64,16 @@ const Testimonials = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          employer_id: 1, // Replace with actual employer ID if needed
-          job_id: 2, // Optional: replace with actual job ID if needed
           rating: rating,
-          content: content,
+          comment: content,
         }),
       });
-  
+
       if (!response.ok) {
         const err = await response.json();
-        throw new Error(err.error || `Error ${response.status}: ${response.statusText}`);
+        throw new Error(err.message || `Error ${response.status}: ${response.statusText}`);
       }
-  
+
       const data = await response.json();
       setTestimonials((prev) => [...prev, data.feedback]);
       setRating(0);
@@ -87,7 +86,7 @@ const Testimonials = () => {
       setError(`Error posting feedback: ${error.message}`);
     }
   };
-  
+
   const handleToggleForm = () => {
     if (formSubmitted) {
       setFormSubmitted(false);
@@ -119,15 +118,17 @@ const Testimonials = () => {
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
                 {testimonials.map((testimonial, index) => {
-                  const validRating = Number.isInteger(testimonial.rating) && testimonial.rating >= 1 && testimonial.rating <= 5
-                    ? testimonial.rating
-                    : 0;
+                  const validRating =
+                    Number.isInteger(testimonial.rating) &&
+                    testimonial.rating >= 1 &&
+                    testimonial.rating <= 5
+                      ? testimonial.rating
+                      : 0;
 
                   return (
                     <div key={index} className="card">
                       <div className="card-content">
-                        <p className="card-para">{testimonial.content}</p>
-                        <h4 className="card-title">{testimonial.reviewer_id}</h4>
+                        <p className="card-para">{testimonial.comment || "No content available"}</p>
                         <div className="card-rating">
                           {[...Array(validRating)].map((_, i) => (
                             <span key={i}>&#9733;</span>
