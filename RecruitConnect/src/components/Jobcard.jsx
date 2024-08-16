@@ -1,32 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import "../jobcard.css";
-import { FaSave, FaArrowRight } from "react-icons/fa";
-import { toast } from "react-toastify";
 
-const JobCard = ({ job, onClick }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const handleSave = (e) => {
-    e.stopPropagation(); // Prevent triggering the card click event
-    // Add logic to save the job
-    fetch("http://127.0.0.1:5000/savejob", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ jobId: job.id }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Job saved:", data);
-        toast.success("Job saved successfully! 🎉");
-      })
-      .catch((error) => {
-        console.error("Error saving job:", error);
-        toast.error("Error saving job. Please try again. 😔");
-      });
-=======
 import React from 'react';
 import '../jobcard.css';
 import { FaSave, FaArrowRight } from 'react-icons/fa'; 
@@ -58,7 +30,6 @@ const JobCard = ({ job, onClick, detailed }) => {
     } catch (error) {
       console.error('Error saving job:', error.response ? error.response.data : error.message);
     }
->>>>>>> main
   };
 
   const handleApply = (e) => {
